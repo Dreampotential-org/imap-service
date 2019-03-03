@@ -1,0 +1,16 @@
+.DS_Store
+# docker-compose.yml
+*.pyc
+*.sqlite3
+.idea
+.env
+docker-mailserver/test/config/empty/
+docker-mailserver/test/config/without-accounts/
+docker-mailserver/test/config/without-virtual/
+docker-mailserver/test/config/with-domain/
+docker-mailserver/test/config/postfix-accounts.cf
+docker-mailserver/test/config/letsencrypt/mail.my-domain.com/combined.pem
+docker-mailserver/test/onedir
+docker-mailserver/config/opendkim/
+docker-mailserver/config
+

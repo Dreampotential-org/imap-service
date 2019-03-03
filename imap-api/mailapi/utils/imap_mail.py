@@ -1,19 +1,21 @@
-import sys
-import imaplib
+from main.models import Account
+
+import datetime
 import email
 import email.header
-import datetime
+import imaplib
+import sys
 
 EMAIL_ACCOUNT = "test2@postgecko.com"
 EMAIL_PASSWORD = "test"
 EMAIL_FOLDER = "INBOX"
 
 
-def connect():
+def connect(email_address, password):
     mail_client = imaplib.IMAP4_SSL('mailserver.postgecko.com')
 
     try:
-        rv, data = mail_client.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
+        rv, data = mail_client.login(email_address, password)
     except imaplib.IMAP4.error:
         print("LOGIN FAILED!!!")
         sys.exit(1)
@@ -25,8 +27,19 @@ def connect():
     return mail_client
 
 
-def get_mails():
-    mail_client = connect()
+def get_all_mails():
+    accounts = Account.objects.all()
+    mails = []
+    for account in accounts:
+        mails = mails + get_mails(
+            account.email, account.password, account.id
+        )
+
+    return mails
+
+
+def get_mails(email_address, password, account_id):
+    mail_client = connect(email_address, password)
     rv, data = mail_client.search(None, "ALL")
     if rv != 'OK':
         print("No messages found!")
@@ -62,6 +75,7 @@ def get_mails():
         mail['row_date'] = msg['Date']
         mail['local_date'] = local_date
         mail['message'] = msg.as_string()
+        mail['account_id'] = account_id
         mails.append(mail)
 
     mail_client.close()

@@ -1,3 +1,14 @@
 from django.contrib import admin
+from main.models import Account, Mail
 
-# Register your models here.
+
+class MailAdmin(admin.ModelAdmin):
+    list_display = ('account', 'subject', 'row_date',)
+
+
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ('email', 'password',)
+
+
+admin.site.register(Account, AccountAdmin)
+admin.site.register(Mail, MailAdmin)

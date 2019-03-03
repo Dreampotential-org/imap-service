@@ -2,8 +2,17 @@ from django.db import models
 import hashlib
 
 
+class Account(models.Model):
+    email = models.CharField(max_length=512)
+    password = models.CharField(max_length=512)
+
+    def __str__(self):
+        return self.email
+
+
 class Mail(models.Model):
     message_id = models.CharField(max_length=512, blank=True)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
     mail_from = models.EmailField()
     mail_to = models.EmailField()
     subject = models.CharField(max_length=512)

@@ -7,7 +7,7 @@ class MailAdmin(admin.ModelAdmin):
 
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('email', 'password',)
+    list_display = ('email', 'password', 'active_on_server',)
 
 
 admin.site.register(Account, AccountAdmin)

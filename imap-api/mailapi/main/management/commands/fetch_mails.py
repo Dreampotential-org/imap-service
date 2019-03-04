@@ -4,7 +4,7 @@ from utils import imap_mail
 
 
 class Command(BaseCommand):
-    help = 'Mail Command'
+    help = 'Fetching mail from mail accounts'
 
     def handle(self, *args, **options):
         messages = imap_mail.get_all_mails()

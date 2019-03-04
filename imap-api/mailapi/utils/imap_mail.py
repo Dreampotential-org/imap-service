@@ -28,7 +28,7 @@ def connect(email_address, password):
 
 
 def get_all_mails():
-    accounts = Account.objects.all()
+    accounts = Account.objects.filter(active_on_server=True)
     mails = []
     for account in accounts:
         mails = mails + get_mails(

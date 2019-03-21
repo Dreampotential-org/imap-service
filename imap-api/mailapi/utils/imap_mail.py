@@ -12,7 +12,7 @@ EMAIL_FOLDER = "INBOX"
 
 
 def connect(email_address, password):
-    mail_client = imaplib.IMAP4_SSL('mailserver.postgecko.com')
+    mail_client = imaplib.IMAP4_SSL('mailserver.ciimbre.com')
 
     try:
         rv, data = mail_client.login(email_address, password)

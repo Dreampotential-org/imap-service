@@ -3,7 +3,7 @@
 *.pyc
 *.sqlite3
 .idea
-.env
+# .env
 docker-mailserver/test/config/empty/
 docker-mailserver/test/config/without-accounts/
 docker-mailserver/test/config/without-virtual/

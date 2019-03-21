@@ -14,7 +14,7 @@ services:
         build: .
         volumes:
             - ./imap-api/mailapi:/home/web/codes
-            - ./opt/var/mail-api.ciimbre.com/sock:/home/sock
+            - /opt/var/mail-api.ciimbre.com/sock:/home/sock
         ports:
             - 8999:8000
         command: /usr/local/bin/gunicorn --env DJANGO_SETTINGS_MODULE=mailapi.settings mailapi.wsgi --workers 3 --bind=unix:/home/sock/api.sock

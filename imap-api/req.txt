@@ -3,4 +3,4 @@ djangorestframework
 markdown
 django-filter
 gunicorn
-psycopg2
+psycopg2-binary

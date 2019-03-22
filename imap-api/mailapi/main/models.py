@@ -12,7 +12,7 @@ class Account(models.Model):
 
 
 class Mail(models.Model):
-    message_id = models.CharField(max_length=512, blank=True)
+    message_id = models.CharField(max_length=512, blank=True, unique=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     mail_from = models.EmailField()
     mail_to = models.EmailField()
@@ -21,7 +21,10 @@ class Mail(models.Model):
     local_date = models.CharField(max_length=128)
     row_date = models.CharField(max_length=128)
 
-    def save(self, *args, **kwargs):
+    def gen_message_id(self):
         val = self.subject + '-' + self.row_date
-        self.message_id = hashlib.sha256(val.encode()).hexdigest()
+        return hashlib.sha256(val.encode()).hexdigest()
+
+    def save(self, *args, **kwargs):
+        self.message_id = self.gen_message_id()
         super(Mail, self).save(*args, **kwargs)

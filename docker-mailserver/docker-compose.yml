@@ -11,8 +11,9 @@ services:
     - "587:587"
     - "993:993"
     volumes:
-    - maildata:/var/mail
-    - mailstate:/var/mail-state
+    - /opt/var/mail-api.ciimbre.com/maildata:/var/mail
+    - /opt/var/mail-api.ciimbre.com/mail-state:/var/mail
+      # - mailstate:/var/mail-state
     - /opt/var/mail-api.ciimbre.com/mail-server-confs/:/tmp/docker-mailserver/
     environment:
     - DMS_DEBUG=${DMS_DEBUG}

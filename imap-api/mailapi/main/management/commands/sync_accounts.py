@@ -12,10 +12,9 @@ class Command(BaseCommand):
         for account in accounts:
             # cmd = 'sudo ../../docker-mailserver/setup.sh email add'.split()
             cmd = 'doveadm pw -s SHA512-CRYPT -p'.split()
-            # cmd.append(account.email)
             cmd.append(account.password)
-            output = subprocess.call(cmd)
-            print(output)
+            output = subprocess.check_output(cmd)
+            output = output.decode('utf-8').replace('\n', '')
             account.active_on_server = True
             account.hash_password = output
             account.save()

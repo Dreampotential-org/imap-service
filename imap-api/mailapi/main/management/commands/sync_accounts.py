@@ -10,7 +10,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         accounts = Account.objects.filter(active_on_server=False)
         for account in accounts:
-            # cmd = 'sudo ../../docker-mailserver/setup.sh email add'.split()
             cmd = 'doveadm pw -s SHA512-CRYPT -p'.split()
             cmd.append(account.password)
             output = subprocess.check_output(cmd)
@@ -18,4 +17,9 @@ class Command(BaseCommand):
             account.active_on_server = True
             account.hash_password = output
             account.save()
-            self.stdout.write("{account.email} created", ending='')
+            password_line = account.email + '|{SHA512-CRYPT}' + output
+
+            with open('/postfix-accounts.cf', 'a') as f:
+                f.write(password_line)
+
+            self.stdout.write("%s created" % account.email, ending='\n')

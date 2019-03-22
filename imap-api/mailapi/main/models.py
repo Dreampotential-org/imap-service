@@ -13,7 +13,7 @@ class Account(models.Model):
 
 
 class Mail(models.Model):
-    message_id = models.CharField(max_length=512, blank=True, unique=True)
+    message_id = models.CharField(max_length=512, blank=True)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     mail_from = models.EmailField()
     mail_to = models.EmailField()

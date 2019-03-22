@@ -17,7 +17,7 @@ class Command(BaseCommand):
             account.active_on_server = True
             account.hash_password = output
             account.save()
-            password_line = account.email + '|{SHA512-CRYPT}' + output
+            password_line = account.email + '|' + output
 
             with open('/postfix-accounts.cf', 'a') as f:
                 f.write(password_line)

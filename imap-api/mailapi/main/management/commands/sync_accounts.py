@@ -14,7 +14,7 @@ class Command(BaseCommand):
             cmd = 'doveadm pw -s SHA512-CRYPT -p'.split()
             # cmd.append(account.email)
             cmd.append(account.password)
-            output = subprocess.call(cmd).read()
+            output = subprocess.call(cmd)
             print(output)
             account.active_on_server = True
             account.hash_password = output

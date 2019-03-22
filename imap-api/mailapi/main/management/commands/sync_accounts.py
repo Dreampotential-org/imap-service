@@ -10,10 +10,13 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         accounts = Account.objects.filter(active_on_server=False)
         for account in accounts:
-            cmd = 'sudo ../../docker-mailserver/setup.sh email add'.split()
-            cmd.append(account.email)
+            # cmd = 'sudo ../../docker-mailserver/setup.sh email add'.split()
+            cmd = 'doveadm pw -s SHA512-CRYPT -p'.split()
+            # cmd.append(account.email)
             cmd.append(account.password)
-            subprocess.call(cmd)
+            output = subprocess.call(cmd).read()
+            print(output)
             account.active_on_server = True
+            account.hash_password = output
             account.save()
             self.stdout.write("{account.email} created", ending='')

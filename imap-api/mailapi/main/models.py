@@ -22,7 +22,7 @@ class Mail(models.Model):
     row_date = models.CharField(max_length=128)
 
     def gen_message_id(self):
-        val = self.subject + '-' + self.row_date
+        val = self.account.email + self.subject + '-' + self.row_date
         return hashlib.sha256(val.encode()).hexdigest()
 
     def save(self, *args, **kwargs):

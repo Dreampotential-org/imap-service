@@ -17,7 +17,7 @@ def connect(email_address, password):
     try:
         rv, data = mail_client.login(email_address, password)
     except imaplib.IMAP4.error:
-        print("LOGIN FAILED!!!")
+        print(email_address + " LOGIN FAILED!!!")
         sys.exit(1)
 
     rv, data = mail_client.select(EMAIL_FOLDER)

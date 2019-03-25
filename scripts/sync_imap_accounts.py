@@ -9,8 +9,7 @@ output = output.decode('utf-8').replace('\n', '')
 output = output.replace('\r', '')
 
 cmds = output.split(',')
-
-
+cmds = [item for item in cmds if item != '']
 print(cmds)
 
 for val in cmds:

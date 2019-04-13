@@ -57,7 +57,7 @@ def get_mails(email_address, password, account_id):
             email.header.decode_header(msg['Subject'])
         )
         subject = str(hdr)
-        print('Message %s: %s' % (num, subject))
+        # print('Message %s: %s' % (num, subject))
         print('Raw Date:', msg['Date'])
         # Now convert to local date-time
         date_tuple = email.utils.parsedate_tz(msg['Date'])

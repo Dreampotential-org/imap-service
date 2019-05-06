@@ -13,7 +13,7 @@ class MailViewSet(viewsets.ModelViewSet):
 
     queryset = Mail.objects.all().order_by('-id')
     serializer_class = MailSerializer
-    http_method_names = ['get', 'head']
+    http_method_names = ['get', 'head', 'post']
 
 
 class AccountViewSet(viewsets.ModelViewSet):

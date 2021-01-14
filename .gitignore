@@ -14,3 +14,4 @@ docker-mailserver/test/onedir
 docker-mailserver/config/opendkim/
 docker-mailserver/config
 
+*.sw?

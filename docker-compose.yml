@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-    db:
-        restart: always
-        image: postgres
-        volumes:
-            - ../postgres-data:/var/lib/postgresql/data
-            - ../pg-backup:/home/pg-backup
-        environment:
-          POSTGRES_DB: mailapi
-
+#    db:
+#        restart: always
+#        image: postgres
+#        volumes:
+#            - ../postgres-data:/var/lib/postgresql/data
+#            - ../pg-backup:/home/pg-backup
+#        environment:
+#          POSTGRES_DB: mailapi
+#
     mail-api:
         build: .
         volumes:

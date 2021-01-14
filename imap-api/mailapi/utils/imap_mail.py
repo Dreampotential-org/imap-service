@@ -12,7 +12,7 @@ EMAIL_FOLDER = "INBOX"
 
 
 def connect(email_address, password):
-    mail_client = imaplib.IMAP4_SSL('mailserver.ciimbre.com')
+    mail_client = imaplib.IMAP4_SSL('dreampotential.org')
 
     try:
         rv, data = mail_client.login(email_address, password)

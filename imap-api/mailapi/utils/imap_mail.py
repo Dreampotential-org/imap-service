@@ -12,7 +12,10 @@ EMAIL_FOLDER = "INBOX"
 
 
 def connect(email_address, password):
-    mail_client = imaplib.IMAP4_SSL('dreampotential.org')
+    print("Trying to connect this")
+    mail_client = imaplib.IMAP4_SSL('agentstat.com')
+    print("HERE>>>")
+
 
     try:
         rv, data = mail_client.login(email_address, password)
@@ -29,6 +32,7 @@ def connect(email_address, password):
 
 def get_all_mails():
     accounts = Account.objects.filter(active_on_server=True)
+    print("There is this amount of accoutns: %s" % len(accounts))
     mails = []
     for account in accounts:
         mails = mails + get_mails(

@@ -6,11 +6,11 @@ services:
         ports:
             - 5437:5432
         volumes:
-            - ../postgres-python-base-dev2:/var/lib/postgresql/data
+            - /opt/ciimbmail:/var/lib/postgresql/data
         environment:
             POSTGRES_DB: postgres
             POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: adewm
+            POSTGRES_PASSWORD: awmyb
         networks:
             - backend
 

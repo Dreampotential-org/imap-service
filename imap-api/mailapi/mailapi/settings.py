@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'mailapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': '3.21.231.89',
+        'HOST': 'localhost',
         'PORT': '5437',
-        'PASSWORD': 'adewm'
+        'PASSWORD': 'awmyb'
     },
 }
 

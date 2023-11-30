@@ -2,11 +2,11 @@ version: '3.3'
 
 services:
     db:
-        image: postgis/postgis:13-3.2
+        image: postgis/postgis:15-3.4
         ports:
-            - 5437:5432
+            - 15437:5432
         volumes:
-            - /opt/ciimbmail:/var/lib/postgresql/data
+            - /opt/ciimbmailw:/var/lib/postgresql/data
         environment:
             POSTGRES_DB: postgres
             POSTGRES_USER: postgres

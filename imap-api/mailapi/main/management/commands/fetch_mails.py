@@ -7,8 +7,11 @@ class Command(BaseCommand):
     help = 'Fetching mail from mail accounts'
 
     def handle(self, *args, **options):
+        print("HERE si where this is called...")
         messages = imap_mail.get_all_mails()
+        print("Number of messages %s" % len(messages))
         for message in messages:
+            print("Got a mail subject: %s" % message['subject'])
             mail = models.Mail()
             mail.subject = message['subject']
             mail.message = message['message']

@@ -21,7 +21,8 @@ def connect(email_address, password):
         rv, data = mail_client.login(email_address, password)
     except imaplib.IMAP4.error:
         print(email_address + " LOGIN FAILED!!!")
-        sys.exit(1)
+        return
+        #sys.exit(1)
 
     rv, data = mail_client.select(EMAIL_FOLDER)
     if rv != 'OK':
@@ -44,6 +45,9 @@ def get_all_mails():
 
 def get_mails(email_address, password, account_id):
     mail_client = connect(email_address, password)
+    if not mail_client:
+        print("Not able to login accout")
+        return
     rv, data = mail_client.search(None, "ALL")
     if rv != 'OK':
         print("No messages found!")
